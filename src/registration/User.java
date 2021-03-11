@@ -1,6 +1,5 @@
 package registration;
 
-
 public class User {
 	private int id;
 	private String name;
@@ -78,4 +77,3 @@ public class User {
 	}
 
 }
-

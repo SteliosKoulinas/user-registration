@@ -5,11 +5,9 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>Register New User</title>
+<title>Display Users</title>
 <link rel="stylesheet"
-	href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css"
-	integrity="sha384-JcKb8q3iqJ61gNV9KGb8thSsNjpSL0n8PARn9HuZOnIxN0hoP+VmmDGMN5t9UJ0Z"
-	crossorigin="anonymous">
+	href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
 
 </head>
 <body>
@@ -30,7 +28,7 @@
 					<th>Birthday</th>
 					<th>Work Address</th>
 					<th>Home Address</th>
-					
+
 				</tr>
 				<%
 				ResultSet rset;
@@ -39,8 +37,6 @@
 				Statement st = con.createStatement();
 
 				ArrayList<User> listUsers = new ArrayList<User>();
-
-			
 
 				rset = st.executeQuery("SELECT * FROM USER, ADDRESS WHERE USER.id = ADDRESS.user_id");
 				while (rset.next()) {
@@ -51,20 +47,19 @@
 					String birthday = rset.getString("birthday");
 					String workaddress = rset.getString("work_address");
 					String homeaddress = rset.getString("home_address");
-					
 
 					User user = new User(id, name, surname, gender, birthday, workaddress, homeaddress);
 					listUsers.add(user);
 				%>
 				<tr>
 					<td><%=id%></td>
-					<td id="<%=id%>" onclick="reply_click(this.id)"><%=name%></td>
+					<td> <%=name%></td>
 					<td><%=surname%></td>
 					<td><%=gender%></td>
 					<td><%=birthday%></td>
 					<td><%=workaddress%></td>
 					<td><%=homeaddress%></td>
-					
+
 				</tr>
 				<%
 				}
@@ -77,10 +72,3 @@
 		</div>
 	</div>
 </body>
-
-<script type="text/javascript">
-
-	function reply_click(id) {
-		console.log(id);
-	}
-</script>
